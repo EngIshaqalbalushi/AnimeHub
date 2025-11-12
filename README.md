@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# 🌸 Anime Website (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Anime Discovery & Info Website** built with **React + Vite**, allowing users to explore trending, ongoing, and completed anime series — complete with images, details, episodes, and characters fetched via the **Jikan (MyAnimeList) API**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+✅ **Dynamic Anime Data**
+- Real anime covers fetched automatically using [Jikan API](https://jikan.moe).  
+- Supports titles, genres, status, rating, and synopsis.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✅ **Beautiful UI**
+- Built with **React**, **SASS**, and **responsive layout**.
+- Modern components like AnimeCard, Navbar, Sidebar, Footer, etc.
 
-## Expanding the ESLint configuration
+✅ **Routing System**
+- Each anime has its own detailed page (`/anime/:id`) using **React Router**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ **Mock Data + Live Integration**
+- Uses `mockData.ts` for local fallback data.
+- Auto-fetches real images from Jikan to enhance realism.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+✅ **Reusable Architecture**
+- Organized by **pages** and **components** (15+ components, 10 pages).
+- Includes helper utilities (search, trending, genre filters, etc).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Layer | Technology |
+|-------|-------------|
+| Frontend | React 18 + Vite |
+| Styling | SASS / SCSS |
+| API | [Jikan REST API](https://jikan.moe) |
+| Routing | React Router DOM |
+| Language | TypeScript |
+| Data | Local Mock Data + Live API Fetch |
+| Build Tool | Vite |
+| Package Manager | npm / pnpm / yarn |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
