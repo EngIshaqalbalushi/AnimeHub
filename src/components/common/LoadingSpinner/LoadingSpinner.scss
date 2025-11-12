@@ -1,0 +1,436 @@
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  // Sizes
+  &--sm {
+    .loading-spinner__container {
+      transform: scale(0.75);
+    }
+
+    .loading-spinner__text {
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  &--md {
+    .loading-spinner__container {
+      transform: scale(1);
+    }
+
+    .loading-spinner__text {
+      font-size: var(--font-size-base);
+    }
+  }
+
+  &--lg {
+    .loading-spinner__container {
+      transform: scale(1.25);
+    }
+
+    .loading-spinner__text {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  &--xl {
+    .loading-spinner__container {
+      transform: scale(1.5);
+    }
+
+    .loading-spinner__text {
+      font-size: var(--font-size-xl);
+    }
+  }
+
+  // Colors
+  &--primary {
+    .loading-spinner__circle {
+      border-color: var(--primary-color) transparent transparent transparent;
+    }
+
+    .loading-spinner__text {
+      color: var(--primary-color);
+    }
+  }
+
+  &--secondary {
+    .loading-spinner__circle {
+      border-color: var(--secondary-color) transparent transparent transparent;
+    }
+
+    .loading-spinner__text {
+      color: var(--secondary-color);
+    }
+  }
+
+  &--accent {
+    .loading-spinner__circle {
+      border-color: var(--accent-color) transparent transparent transparent;
+    }
+
+    .loading-spinner__text {
+      color: var(--accent-color);
+    }
+  }
+
+  &--white {
+    .loading-spinner__circle {
+      border-color: white transparent transparent transparent;
+    }
+
+    .loading-spinner__text {
+      color: white;
+    }
+  }
+
+  // Overlay variant
+  &--overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+
+    .loading-spinner__container {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform var(--transition-normal);
+  }
+
+  &__spinner {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__circle {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 4px solid;
+    border-radius: 50%;
+    animation: loading-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: currentColor transparent transparent transparent;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+
+    &:nth-child(4) {
+      animation-delay: 0s;
+    }
+  }
+
+  &__text {
+    font-weight: var(--font-medium);
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Dots variant (alternative style)
+.loading-spinner--dots {
+  .loading-spinner__spinner {
+    width: 60px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .loading-spinner__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: currentColor;
+    animation: loading-dots 1.4s ease-in-out infinite both;
+    border: none;
+    position: static;
+    margin: 0;
+
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0s;
+    }
+  }
+}
+
+// Bar variant (alternative style)
+.loading-spinner--bar {
+  .loading-spinner__spinner {
+    width: 80px;
+    height: 4px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .loading-spinner__circle {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    border: none;
+    animation: loading-bar 1.5s ease-in-out infinite;
+    border-radius: var(--radius-full);
+  }
+}
+
+// Pulse variant (alternative style)
+.loading-spinner--pulse {
+  .loading-spinner__spinner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: loading-pulse 1.2s ease-in-out infinite both;
+  }
+
+  .loading-spinner__circle {
+    display: none;
+  }
+}
+
+// Keyframe animations
+@keyframes loading-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-dots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Compact variant
+.loading-spinner--compact {
+  .loading-spinner__container {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .loading-spinner__spinner {
+    width: 20px;
+    height: 20px;
+  }
+
+  .loading-spinner__circle {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    border-width: 2px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Inline variant
+.loading-spinner--inline {
+  display: inline-flex;
+  width: auto;
+  height: auto;
+
+  .loading-spinner__container {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .loading-spinner__spinner {
+    width: 16px;
+    height: 16px;
+  }
+
+  .loading-spinner__circle {
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+    border-width: 2px;
+  }
+
+  .loading-spinner__text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .loading-spinner--overlay {
+    .loading-spinner__container {
+      background: #2d3748;
+      border-color: #4a5568;
+    }
+  }
+
+  .loading-spinner--bar {
+    .loading-spinner__spinner {
+      background: #4a5568;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner__circle,
+  .loading-spinner__spinner {
+    animation: none;
+  }
+
+  .loading-spinner--dots .loading-spinner__circle,
+  .loading-spinner--bar .loading-spinner__circle,
+  .loading-spinner--pulse .loading-spinner__spinner {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  // Show static spinner for reduced motion
+  .loading-spinner:not(.loading-spinner--dots):not(.loading-spinner--bar):not(.loading-spinner--pulse) {
+    .loading-spinner__spinner::before {
+      content: '⏳';
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loading-spinner__circle {
+      display: none;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .loading-spinner--overlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .loading-spinner__circle {
+    border-width: 3px;
+  }
+}
+
+// Print styles
+@media print {
+  .loading-spinner {
+    display: none;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .loading-spinner--overlay {
+    .loading-spinner__container {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  }
+
+  .loading-spinner__spinner {
+    width: 60px;
+    height: 60px;
+  }
+
+  .loading-spinner__circle {
+    width: 48px;
+    height: 48px;
+    margin: 6px;
+  }
+
+  .loading-spinner--lg {
+    .loading-spinner__container {
+      transform: scale(1.1);
+    }
+  }
+
+  .loading-spinner--xl {
+    .loading-spinner__container {
+      transform: scale(1.25);
+    }
+  }
+}
+
+// Focus styles for accessibility
+.loading-spinner:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

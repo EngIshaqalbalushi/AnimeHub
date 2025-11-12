@@ -1,0 +1,202 @@
+.btn {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-shadow: var(--shadow-sm);
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  &--primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: 1px solid var(--primary-color);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &--secondary {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    color: white;
+    border: 1px solid var(--secondary-color);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(31, 41, 55, 0.3);
+      background: linear-gradient(135deg, var(--secondary-dark), var(--text-primary));
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: none;
+
+    &:hover:not(:disabled) {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: none;
+
+    &:hover:not(:disabled) {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &--success {
+    background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+    color: white;
+    border: 1px solid var(--success-color);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, var(--success-dark), #047857);
+    }
+  }
+
+  &--warning {
+    background: linear-gradient(135deg, var(--warning-color), var(--warning-dark));
+    color: white;
+    border: 1px solid var(--warning-color);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+      background: linear-gradient(135deg, var(--warning-dark), #b45309);
+    }
+  }
+
+  // Size variants
+  &--sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  &--md {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  &--lg {
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  // Full width variant
+  &--full {
+    width: 100%;
+  }
+
+  // Loading state
+  &.loading {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border: 1px solid var(--border-light);
+    color: transparent;
+    pointer-events: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Button group
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+
+  &.btn-group--vertical {
+    flex-direction: column;
+  }
+
+  &.btn-group--stretch {
+    .btn {
+      flex: 1;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .btn {
+    &--lg {
+      padding: 14px 28px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    &--sm {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    &--md {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    &--lg {
+      padding: 12px 24px;
+      font-size: 15px;
+    }
+  }
+}

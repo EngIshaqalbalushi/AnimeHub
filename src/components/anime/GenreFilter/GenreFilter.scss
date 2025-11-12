@@ -1,0 +1,196 @@
+.genre-filter {
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: var(--radius-full);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+  }
+
+  &__item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: var(--font-medium);
+
+    &:hover {
+      border-color: var(--primary-color);
+      transform: translateX(4px);
+      background: var(--bg-secondary);
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.1);
+    }
+
+    &--active {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-color: var(--primary-color);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+
+      &::after {
+        content: '✓';
+        font-weight: bold;
+        margin-left: 0.5rem;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+    }
+  }
+
+  // Selected count badge
+  &__selected-count {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Compact view for mobile
+.genre-filter.compact {
+  .genre-filter__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .genre-filter__item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &--active:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Loading state
+.genre-filter.loading {
+  .genre-filter__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .genre-filter__item {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border: 1px solid var(--border-light);
+    color: transparent;
+    min-height: 44px;
+
+    &:hover {
+      transform: none;
+      border: 1px solid var(--border-light);
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .genre-filter {
+    &__list {
+      max-height: 200px;
+    }
+
+    &__item {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .genre-filter {
+    &__title {
+      font-size: 1rem;
+    }
+
+    &__item {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    &__selected-count {
+      width: 18px;
+      height: 18px;
+      font-size: 0.65rem;
+    }
+  }
+}

@@ -1,0 +1,296 @@
+.anime-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  &__hero {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &__image-container {
+    position: relative;
+    
+    &:hover {
+      .anime-detail__image-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+  }
+
+  &__image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(16, 185, 129, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+    color: white;
+  }
+
+  &__info {
+    .anime-detail__title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+      font-weight: var(--font-bold);
+    }
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .meta-label {
+      font-weight: var(--font-semibold);
+      color: var(--text-secondary);
+    }
+
+    .meta-value {
+      color: var(--text-primary);
+      font-weight: var(--font-medium);
+
+      &.status-ongoing {
+        color: var(--success-color);
+        background: rgba(16, 185, 129, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: var(--font-semibold);
+      }
+      &.status-completed {
+        color: var(--primary-color);
+        background: rgba(16, 185, 129, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: var(--font-semibold);
+      }
+      &.status-upcoming {
+        color: var(--warning-color);
+        background: rgba(245, 158, 11, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: var(--font-semibold);
+      }
+    }
+  }
+
+  &__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__genre {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: var(--font-medium);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
+    }
+  }
+
+  &__synopsis {
+    margin-bottom: 2rem;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+
+    h3 {
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-semibold);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-size: var(--font-size-base);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__tabs {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+
+    .tabs-header {
+      display: flex;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 0;
+      background: var(--bg-secondary);
+    }
+
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+      font-weight: var(--font-medium);
+
+      &:hover {
+        color: var(--primary-color);
+        background: var(--bg-tertiary);
+      }
+
+      &.active {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        background: var(--bg-primary);
+        font-weight: var(--font-semibold);
+      }
+    }
+  }
+}
+
+.anime-not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+
+  h2 {
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-semibold);
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .anime-detail {
+    padding: 1rem;
+
+    &__hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    &__image {
+      height: 300px;
+    }
+
+    &__meta {
+      grid-template-columns: 1fr;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__title {
+      font-size: 2rem !important;
+    }
+
+    .tabs-header {
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      flex: 1;
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .anime-detail {
+    &__title {
+      font-size: 1.75rem !important;
+    }
+
+    &__meta {
+      gap: 0.75rem;
+    }
+
+    .meta-item {
+      padding: 0.5rem;
+    }
+
+    &__genre {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    &__synopsis {
+      padding: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+}
