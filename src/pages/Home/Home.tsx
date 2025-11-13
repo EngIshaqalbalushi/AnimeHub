@@ -12,6 +12,20 @@ const Home: React.FC = () => {
   return (
     <div className="home">
       <section className="hero">
+        {/* 🌟 Full Background YouTube Video */}
+        <div className="hero__video-background">
+          <iframe
+            className="hero__video"
+            src="https://www.youtube.com/embed/i0Sd0YPERpg?autoplay=1&mute=1&loop=1&playlist=i0Sd0YPERpg&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
+            title="Anime Background Video"
+            frameBorder="0"
+            allow="autoplay; encrypted-media; fullscreen"
+            allowFullScreen
+          ></iframe>
+          <div className="hero__video-overlay"></div>
+        </div>
+
+        {/* Content Over Video */}
         <div className="hero__content">
           <h1 className="hero__title">Welcome to AnimeHub</h1>
           <p className="hero__subtitle">
@@ -23,6 +37,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Trending Section */}
       <section className="section">
         <div className="section__header">
           <h2 className="section__title">Trending Now</h2>
@@ -37,6 +52,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Recent Section */}
       <section className="section">
         <div className="section__header">
           <h2 className="section__title">Recently Added</h2>
@@ -51,6 +67,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Popular Section */}
       <section className="section">
         <div className="section__header">
           <h2 className="section__title">Most Popular</h2>
